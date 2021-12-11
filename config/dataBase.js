@@ -18,7 +18,7 @@ const db = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.D
 //Conectar con el servidor y crear el modelo en la DB
 db.authenticate()
     .then(() => {
-        db.sync({ alter: true })
+        db.sync()
             .then(() => console.log('Conectado al Servidor Mysql'))
             .catch(error => console.log(error.message));
     })
