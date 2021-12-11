@@ -7,22 +7,22 @@ const db = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.D
     define: {
         timestamps: false,
     },
-    pool:{
-      max:5,
-      min:0,
-      acquire:30000,
-      idle:10000
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
     }
 });
 
 //Conectar con el servidor y crear el modelo en la DB
 db.authenticate()
-.then(()=>{
-    db.sync()
-    .then(() => console.log('Conectado al Servidor Mysql'))
-    .catch(error => console.log(error.message));
-})
-.catch((error)=>console.log(error.message))
+    .then(() => {
+        db.sync({ alter: true })
+            .then(() => console.log('Conectado al Servidor Mysql'))
+            .catch(error => console.log(error.message));
+    })
+    .catch((error) => console.log(error.message))
 
 
 module.exports = db;
