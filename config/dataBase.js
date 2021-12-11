@@ -1,9 +1,9 @@
 const { Sequelize } = require('sequelize');
 
-const db = new Sequelize(BD_NOMBRE, BD_USER, BD_PASS, {
-    host: BD_HOST,
+const db = new Sequelize(process.env.BD_NOMBRE, process.env.BD_USER, process.env.BD_PASS, {
+    host: process.env.BD_HOST,
     dialect: "mysql",
-    port: BD_PORT,
+    port: process.env.BD_PORT,
     define: {
         timestamps: false,
     },
