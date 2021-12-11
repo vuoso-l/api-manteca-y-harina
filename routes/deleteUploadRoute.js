@@ -5,6 +5,6 @@ const router = express.Router();
 const deleteUploadController = require("../controllers/upload/deleteUploadController");
 
 //Rutas para la elminación de imágenes
-router.get("/delete/:id", deleteUploadController.deleteUpload );
+router.delete("/delete/:id", deleteUploadController.deleteUpload );
 
 module.exports = router;
