@@ -5,3 +5,4 @@
 - NodeJs - Express
 - MySql
 - Cloudinary
+- Deploy in Heroku (PaaS)
