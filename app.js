@@ -10,9 +10,8 @@ const cors = require('cors');
 const app = express();
 
 //settings
-//Se importa la dependencia dotenv para configurar las variables de entrono
-require("dotenv").config({ path: "variables.env" });
-const port=process.env.PORT|| 3000;
+const port = process.env.HOST || "0.0.0.0";
+const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname + "/public")));
 
@@ -50,6 +49,6 @@ app.use(require("./routes/updateRoute"));
 app.use(helmet());
 
 //Servidor
-app.listen(port, () => {
+app.listen(port, host, () => {
     console.log(`Escuchando peticiones en el puerto ${port}`);
 });
