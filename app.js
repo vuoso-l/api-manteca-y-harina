@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require("path");
-//const morgan = require("morgan");
 const multer = require("multer");
 const { v4: uuidv4 } = require('uuid');
 uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
@@ -19,7 +18,6 @@ app.use(express.static(path.join(__dirname + "/public")));
 app.use(cors());
 
 //Middlewares
-//app.use(morgan("dev")); //sirve para ver cada paso que se va recorriendo en la web
 app.use(express.json());
 app.use(express.urlencoded({extended: false }));
 
