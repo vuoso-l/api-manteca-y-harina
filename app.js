@@ -10,17 +10,6 @@ const auth = require("./config/authentication")
 
 const app = express();
 
-//endpoints que no necesitan token para acceder
-auth.unless = unless;
-app.use(auth.unless({
-  path: [
-    { url: "/", methods: ["GET"] },
-    { url: "/images", methods: ["GET"] },
-    { url: "/registro", methods: ["POST"] },
-    { url: "/login", methods: ["POST"] },
-  ]
-}));
-
 //settings
 require("dotenv").config({ path: "variables.env" });
 const host = process.env.HOST || "0.0.0.0";
