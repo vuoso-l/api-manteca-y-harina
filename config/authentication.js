@@ -3,27 +3,27 @@ const jwt = require("jsonwebtoken");
 //Middleware del usuario corroborado
 const auth = (req, res, next) => {
 
-    try {
+        const authHeader = req.headers.authorization;
 
-        const token = req.headers.authorization;
-
-        if (!token) {
+        if (!authHeader) {
             throw new Error("No tenés acceso");
         }
 
-        jwt.verify(token, "secret", (err, decoded) => {
+        const token = authHeader.split(" ")[1];
+        let revisarToken;
 
-            if (err) {
-                throw new Error("Token inválido");
-            }
-            
-            next();
-        });
+        try {
+            revisarToken = jwt.verify(token, "secret");                
+                        
+        } catch (e) {
+            res.status(500).json({ message: e.message });
+        }
 
+        if (!revisarToken) {
+            throw new Error("No autenticado");
+        }
 
-    } catch (e) {
-        res.status(413).send({ message: e.message });
-    }
+        next();
 
 }
 

@@ -14,15 +14,15 @@ exports.postLogin = async (req, res) => {
 
         const user = await User.findOne({ where: { email } });
         if (!user) {
-            return res.send("Usuario y/o contraseña incorrecta");
+            return res.status(401).json({Mensaje: "Usuario y/o contraseña incorrecta"});
         }
         crypto.pbkdf2(password, user.salt, 10000, 64, "sha1", (err, key) => {
             const encryptedPassword = key.toString("base64");
             if (user.password === encryptedPassword) {
-                const token = signToken(user.id);
-                return res.send({ token });
+                const token = signToken(user.id, user.email);                
+                return res.status(200).json({ token: token });
             }
-            return res.send("Usuario y/o contraseña incorrecta");
+            return res.status(401).json({Mensaje: "Usuario y/o contraseña incorrecta"});
         })
 
     } catch (e) {
