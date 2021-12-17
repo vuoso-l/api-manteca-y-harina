@@ -5,8 +5,6 @@ const { v4: uuidv4 } = require('uuid');
 uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
 const helmet = require("helmet");
 const cors = require('cors');
-const unless = require("express-unless");
-const auth = require("./config/authentication")
 
 const app = express();
 
@@ -27,7 +25,7 @@ const imageFilter = (req, file, cb) => { //para que solo se suban img
   if (file.mimetype.startsWith("image")) {
     cb(null, true);
   } else {
-    cb("Please upload only images.", false);
+    cb("Solo subir imágenes", false);
   }
 };
 
