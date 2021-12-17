@@ -6,3 +6,4 @@
 - MySql
 - Cloudinary
 - Deploy in Heroku (PaaS)
+- Endpoints security
