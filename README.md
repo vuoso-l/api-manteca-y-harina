@@ -1,6 +1,6 @@
-# **API Rest de la página web de Manteca & Harina**
+# **API Rest - Manteca & Harina**
 
-## Aspectos técnicos
+## Used technologies
 - Javascript
 - NodeJs - Express
 - MySql
