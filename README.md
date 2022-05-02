@@ -7,5 +7,5 @@ In this repository you can find the API Rest corresponding to the web page of Ma
 - NodeJs - Express
 - MySql
 - Cloudinary
-- Deploy in Heroku (PaaS)
+- Deployment on Heroku (PaaS)
 - Endpoints security
